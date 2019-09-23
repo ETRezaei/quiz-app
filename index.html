@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz APP</title>
+</head>
+<body>
+    <div id="container-start">
+        <h1>Coding Quiz</h1>
+        <h3>Try to answer the following code-related questions with the time limit. </h3>
+        <button id="start-button">Start</button>
+    </div>
+    <div id="container-quiz" style="display: none;">
+        <p id="timer"></p>
+        <hr>
+        <h3 id="q"><span class="pink">Question: </span> <span id="question"></span></h3>
+        <ol>
+            <li class="list-group-item list-group-item-info"><a id="li-1"></a></li>
+            <li class="list-group-item list-group-item-info"><a id="li-2"></a></li>
+            <li class="list-group-item list-group-item-info"><a id="li-3"></a></li>
+            <li class="list-group-item list-group-item-info"><a id="li-4"></a></li>
+        </ol>
+        <hr>
+        <p id="status"></p>
+    </div>
+    <div id="container-result" style="display: none;">
+        <h3>ALL DONE!!</h3>
+        <h5>Your final score is: <span id="result"></span></h5>
+        <form>
+            Initial: <input type="text" name="initial" ><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
