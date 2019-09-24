@@ -3,6 +3,7 @@
 }
 h1 {
     margin-left: 250px; 
+    color: #e91e63;
 }
 #start-button{
     margin-left: 350px;
@@ -20,5 +21,30 @@ ol {
     color:  #e91e63;
 }
 #timer {
+    margin-left: 50%;
+}
+#container-result  {
+    margin-left: 200px;
+}
+#result {
+    color: #e91e63;
+}
+h5, #ini #hscore {
+    margin-left: 250px;
+}
+h5 {
+    margin-top: 50px;
+}
+#ini{
+    margin-left: 250px;
+}
+#submitbt {
+    margin-top: 10px;
+    margin-left: 170px;
+}
+#container-hightscore {
+    margin-left: 300px;
+}
+#goback #clearscore {
     margin-left: 50%;
 }
