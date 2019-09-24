@@ -9,26 +9,40 @@ let timeEl = document.getElementById("timer");
 let score = 0;
 let resultContainer = document.getElementById("container-result");
 let result = document.getElementById("result");
+let submitEL = document.getElementById("submitbt");
+let hightScoreContainer = document.getElementById("container-hightscore");
+let goBackBt = document.getElementById("goback");
+let hscore = document.getElementById("hscore");
+let scoreStorage = localStorage.getItem("scorek");
+ 
 
 let questions = [
-                    {q:"What is the clientside programming language?", 
-                     o:["HTML", "CSS", "Javascript", "C++"],
-                     a:"Javascript"
+                    {q: "What is the clientside programming language?", 
+                     o: ["HTML", "CSS", "Javascript", "C++"],
+                     a: "Javascript"
                     },
-                    {q:"which of the following languages is being used in both frontend and backend?",
-                     o:["Python", "C#", "Sql", "Javascript"],
-                     a:"Javascript"
+                    {q: "which of the following languages is being used in both frontend and backend?",
+                     o: ["Python", "C#", "Sql", "Javascript"],
+                     a: "Javascript"
                     },
                     {q: "Arrays in Javascript can be used to store _______.",
                      o: ["numbers and strings", "arrays", "boolean", "all of the above"],
                      a: "all of the above"
-
+                    },
+                    {q: "Commonly used data types DO NOT include:",
+                     o: ["strings", "booleans", "alerts", "numbers"],
+                     a: "alerts"
+                    },
+                    {q: "The condition in an if / else statement is enclosed within ____.",
+                     o: ["quotes", "curly brackets", "parentheses", "square brackets"],
+                     a:  "parentheses"
                     }
                 ]
     
 
     function setTime() {
-        var secondsLeft = questions.length*5;
+        timeEl.textContent = '';
+        var secondsLeft = questions.length*10;
         var timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft ;
@@ -38,6 +52,10 @@ let questions = [
             hideEl(quizContainer);
             result.textContent = score;
             showEl(resultContainer);
+            questionEl.textContent = '';
+            for(let q = 0; q < liEls.length; q++){
+                liEls[q].textContent = '';
+            }
         }
     
         }, 1000);
@@ -46,9 +64,10 @@ let questions = [
     
     function statusTimer(){
         let secondeLeft = 2;
-        let showanswer = setInterval(function(){
+        let showAnswer = setInterval(function(){
         secondeLeft--;    
-        if (secondeLeft===0){
+
+        if (secondeLeft === 0){
             statusEl.textContent = "";
         }
         },250);
@@ -61,6 +80,7 @@ function hideEl(el){
 function showEl(el){
     el.setAttribute("style", "display:block");
 }
+
 function showQuestion(arr, i){
         questionEl.textContent = arr[i].q;
         for(let q = 0; q < liEls.length; q++){
@@ -84,6 +104,12 @@ function showQuestion(arr, i){
                 hideEl(quizContainer);
                 result.textContent = score;
                 showEl(resultContainer);
+                
+                questionEl.textContent = '';
+            for(let q = 0; q < liEls.length; q++){
+                liEls[q].textContent = '';
+            }
+
             }
             if(i < arr.length-1){
                 showQuestion(arr,i+1)
@@ -98,11 +124,21 @@ startButton.addEventListener("click", function(){
     showEl(quizContainer);
     setTime();
     showQuestion(questions, 0);
+    hideEl(hightScoreContainer);
 })
 
-// showQuestion.length.addEventListener("click",function(){
-//     showEl(result);
-//     result.textContent = score;
+submitEL.addEventListener("click",function(event){
+    event.preventDefault;
+    hideEl(resultContainer);
+    // hideEl(hightScoreEl);
+    showEl(hightScoreContainer);
+    localStorage.setItem("scorek",result.textContent);
+
+})
+goBackBt.addEventListener("click", function(){
+    hideEl(hightScoreContainer);
+    // hideEl(quizContainer)
+    showEl(startContainer);
+})
 
 
-// })
