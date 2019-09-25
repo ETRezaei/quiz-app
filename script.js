@@ -14,7 +14,8 @@ let hightScoreContainer = document.getElementById("container-hightscore");
 let goBackBt = document.getElementById("goback");
 let hscore = document.getElementById("hscore");
 let scoreStorage = localStorage.getItem("scorek");
- 
+let clearBt = document.getElementById("clearscore");
+let inputEl = document.querySelector("input");
 
 let questions = [
                     {q: "What is the clientside programming language?", 
@@ -39,11 +40,11 @@ let questions = [
                     }
                 ]
     
-
+    var timerInterval;
     function setTime() {
         timeEl.textContent = '';
         var secondsLeft = questions.length*10;
-        var timerInterval = setInterval(function() {
+        timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft ;
     
@@ -94,6 +95,7 @@ function showQuestion(arr, i){
                 statusTimer();
             }
             else{
+                score += 0;
                 let timeLeft = parseInt(timeEl.textContent);
                 timeEl.textContent = timeLeft > 5 ? timeLeft -5 : 0;
                 statusEl.textContent = "You are incorrect";
@@ -101,6 +103,7 @@ function showQuestion(arr, i){
 
             }
             if(i === arr.length-1){
+                clearInterval(timerInterval);
                 hideEl(quizContainer);
                 result.textContent = score;
                 showEl(resultContainer);
@@ -111,9 +114,12 @@ function showQuestion(arr, i){
             }
 
             }
+
             if(i < arr.length-1){
-                showQuestion(arr,i+1)
+                i += 1
+                showQuestion(arr,i)
             }
+
         })
 
     }
@@ -130,9 +136,13 @@ startButton.addEventListener("click", function(){
 submitEL.addEventListener("click",function(event){
     event.preventDefault;
     hideEl(resultContainer);
-    // hideEl(hightScoreEl);
+   
     showEl(hightScoreContainer);
+//    result.textContent = scoreStorage;
+    hscore.textContent += inputEl.value +" : " + score;
     localStorage.setItem("scorek",result.textContent);
+
+   
 
 })
 goBackBt.addEventListener("click", function(){
@@ -141,4 +151,9 @@ goBackBt.addEventListener("click", function(){
     showEl(startContainer);
 })
 
+clearBt.addEventListener("click", function(){
+    localStorage.clear();
 
+    hscore.textContent = '' 
+    
+})

@@ -45,6 +45,13 @@ h5 {
 #container-hightscore {
     margin-left: 300px;
 }
-#goback #clearscore {
-    margin-left: 50%;
+#goback {
+    margin-left: 250px;
+    margin-top: 200px;
+}
+
+#hscore {
+    margin-left: 300px;
+    font-size: 20px;
+    
 }
